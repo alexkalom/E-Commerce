@@ -1,7 +1,7 @@
 # E-Commerce
 
 ## Description
-E-Commerce is a web application for online shopping, which uses the Meteor Framework. This application was created for melimelitini.com 
+E-Commerce is an online store, which uses the Meteor Framework. This application was created for melimelitini.com 
   
 ## Installation
 
