@@ -1,0 +1,52 @@
+<template name="kallintikaproduct" >
+	<article id="shop">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<h3>{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div id="product_image" class="col-sm-6 col-xs-7">
+					<img class="product-details-image js-product-image-click" src="{{img_src}}" alt="{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}" />
+				</div>
+				<div id = "product_details" class="col-sm-6 col-xs-5 margin-top-10">
+					<p class="h5">Details</p>
+					<p class="h6"><span class="glyphicon glyphicon-eur" aria-hidden="true">{{price}}EUR</span></p>
+					<p>{{#if eng}}{{properties_eng}}{{else}}{{properties_gr}}{{/if}}</p>
+					<a href="#" class="btn btn-success js-add-to-wishlist">Add to Wishlist</a>
+					<p style="color: grey;">Quantity</p>
+					<input type="text" id="add_to_cart_quantiy" value="1" /> &nbsp;
+					<a href="#" class="btn btn-success js-add-to-cart">Add to Cart</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<p style="color:grey;">Description</p>
+					<p>{{#if eng}}{{description_eng}}{{else}}{{description_gr}}{{/if}}</p>
+				</div>
+			</div>
+		</div>
+	</article>
+	<script type="text/javascript">
+		$("html, body").scrollTop($("#shop").offset().top);
+		if ($(window).width() <=400) {
+			$("#product_image").removeClass("col-xs-7");
+			$("#product_details").removeClass("col-xs-5");
+		}
+		else {
+			$("#product_image").addClass("col-xs-7");
+			$("#product_details").addClass("col-xs-5");
+		}
+		$( window ).resize(function() {
+  			if ($(window).width() <=400) {
+  				$("#product_image").removeClass("col-xs-7");
+  				$("#product_details").removeClass("col-xs-5");
+  			}
+  			else {
+  				$("#product_image").addClass("col-xs-7");
+  				$("#product_details").addClass("col-xs-5");
+  			}
+		});
+	</script>
+</template>

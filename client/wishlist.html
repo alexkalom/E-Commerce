@@ -1,0 +1,55 @@
+<template name="wishlist">
+	<article id="shop">
+		<div class="container">
+			<h3>{{#if eng}}My Wishlist{{else}}Η λίστα επιθυμιών μου{{/if}}</h3>
+			<div clsas="row">
+				{{#if isEmpty}}
+					<h4>{{#if eng}}There are no items here yet!{{else}}Δεν υπάρχουν προϊόντα στην λίστα επιθυμιών σας.{{/if}}</h4>
+				{{/if}}
+				{{#each meliaproduct}}
+				{{#with meliaproduct_details _id}}
+				<div class="col-sm-6 product-container" style="height: 350px;">
+					<div style="width:95%;">
+						<div>
+							<h3>{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}</h3>
+						</div>
+						<a href="{{img_src}}"><img class="product-thumbnail" src="{{img_src}}" alt="{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}" /></a>
+						<div class="product-thumbnail-details" >
+							<p>{{#if eng}}Also contains:{{contains_eng}} {{else}}Περιέχει επίσης: {{contains_gr}}{{/if}}</p>
+							<p style="padding-top:10px;">{{#if eng}}Price: {{else}}Τιμή: {{/if}}{{price}} EUR {{#if available}}<a href="#" class="js-add-to-cart1" data-toggle="tooltip" title="{{#if eng}}Add to cart {{else}}Προσθήκη στο καλάθι {{/if}}"><img style="width:25px; height:25px; position: relative; bottom: 5px; left: 20px;" src="/add_to_cart.png"></a>{{/if}}</p>
+							<p><a href="#" class="js-remove-from-wishlist-shop1"> {{#if eng}}remove from wishlist{{else}}Αφαίρεση από την λίστα επιθυμιών{{/if}}</a></p>
+							{{#if available}}{{else}}<p>{{#if eng}}Out of stock{{else}}Το προϊόν εξαντλήθηκε{{/if}}</p>{{/if}}
+							<p style="color:grey;">{{#if eng}}Description{{else}}Περιγραφή{{/if}}</p>
+							<p>{{#if eng}}{{description_eng}}{{else}}{{description_gr}}{{/if}}</p>
+						</div>
+					</div>
+				</div>
+				{{/with}}
+				{{/each}}
+				{{#each kalliproduct}}
+				{{#with kalliproduct_details _id}}
+				<div class="col-sm-6 product-container" style="height: 350px;">
+					<div style="width:95%;">
+						<div>
+							<h3>{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}</h3>
+						</div>
+						<a href="{{img_src}}"><img class="product-thumbnail" src="{{img_src}}" alt="{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}" /></a>
+						<div class="product-thumbnail-details" >
+							<p>{{#if eng}}Also contains:{{contains_eng}} {{else}}Περιέχει επίσης: {{contains_gr}}{{/if}}</p>
+							<p style="padding-top:10px;">{{#if eng}}Price: {{else}}Τιμή: {{/if}}{{price}} EUR {{#if available}}<a href="#" class="js-add-to-cart2" data-toggle="tooltip" title="{{#if eng}}Add to cart {{else}}Προσθήκη στο καλάθι {{/if}}"><img style="width:25px; height:25px; position: relative; bottom: 5px; left: 20px;" src="/add_to_cart.png"></a>{{/if}}</p>
+							<p><a href="#" class="js-remove-from-wishlist-shop2"> {{#if eng}}remove from wishlist{{else}}Αφαίρεση από την λίστα επιθυμιών{{/if}}</a></p>
+							{{#if available}}{{else}}<p>{{#if eng}}Out of stock{{else}}Το προϊόν εξαντλήθηκε{{/if}}</p>{{/if}}
+							<p style="color:grey;">{{#if eng}}Description{{else}}Περιγραφή{{/if}}</p>
+							<p>{{#if eng}}{{description_eng}}{{else}}{{description_gr}}{{/if}}</p>
+						</div>
+					</div>
+				</div>
+				{{/with}}
+				{{/each}}
+			</div>
+		</div>
+	</article>
+	<script type="text/javascript">
+		scrollDown("#shop");
+	</script>
+</template>

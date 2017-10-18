@@ -1,0 +1,94 @@
+<template name="admin_update_melia_product">
+	<article id="shop">
+		{{#if admin}}
+		<form id ="container_form" class= "product_update_form" name="container_form" data = "{{_id}}">
+		<div class="container">
+			<h2>Ενημερωση Προϊόντος</h2>
+			<div>
+				<a class="btn btn-info js-toogle-availability" href="#">{{#if getavailable}}Διαθέσιμο{{else}}Εξαντλήθηκε{{/if}}</a>
+				<a class="btn btn-danger js-remove-product" data="{{_id}}" href="#">Διαγραφή Προϊόντος</a>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<p style="color:grey;">Όνομα στα αγγλικά</p>
+					<input type="text" id="name_eng" name="name_eng" value = "{{name_eng}}" />
+				</div>
+				<div class="col-xs-12">
+					<p style="color:grey;">Όνομα στα ελληνικά</p>
+					<input type="text" id="name_gr" name="name_gr" value = "{{name_gr}}" />
+				</div>
+			</div>
+			<div class="row">
+				<div id="product_image" class="col-sm-6 col-xs-7">
+					<img class="product-details-image js-product-image-click" src="{{img_src}}" alt="{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}" />
+					<p style="color:grey;">Διεύθυνση εικόνας</p>
+					<input type="text" style="width:100%;" id="img_src" name="img_src" value="{{img_src}}" />
+				</div>
+				<div  id="product_details" class="col-sm-6 col-xs-5 margin-top-10">
+					<p class="h5">Λεπτομέριες Προϊόντος</p>
+					<p style="color:grey;">Τιμή</p>
+					<p class="h6"><span class="glyphicon glyphicon-eur" aria-hidden="true"><input type="text" id="price" name="price" value="{{price}}" />EUR</span></p>
+					<p style="color:grey;">Περιέχει ακόμα στα αγγλικά:</p>
+					<p><input type="text" id="contains_eng" name="contains_eng" value="{{contains_eng}}"/></p>
+					<p style="color:grey;">Περιέχει ακόμα στα ελληνικά:</p>
+					<p><input type="text" id="contains_gr" name="contains_gr" value="{{contains_gr}}"/></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<p style="color:grey;">Περιγραφή στα αγγλικά</p>
+					<p><textarea id="description_eng" name="description_eng" value="{{description_eng}}"></textarea></p>
+					<p style="color:grey;">Περιγραφή στα ελληνικά</p>
+					<p><textarea id="description_gr" name="description_gr" value="{{description_gr}}"></textarea></p>
+				</div>
+			</div>
+			<div class="row">
+				<button type="button" class="btn btn-warning js-button-cancel">Cancel</button>
+				<button type="submit" class="btn btn-success">Save Changes</button>
+			</div>
+		</div>
+	</form>
+	<script type="text/javascript">
+		window.clearInterval(intervalId);
+	</script>
+	{{else}}
+	<div class="container">
+				<h2>This page does not exist HTTP Error 404</h2>
+				<p>You will be redirected automatically to the home page in <span style="color:blue;" id="time">5</span> seconds</p>
+				<script type="text/javascript">
+					var count = 5;
+					var intervalId = setInterval(function () {
+						if (count == 0) {
+							clearInterval(intervalId);
+							Router.go('/');
+						}
+						else {
+							count--;
+							$("#time").html(count);
+						}
+					},1000);
+				</script>
+			</div>	
+	{{/if}}
+	</article>
+	<script type="text/javascript">
+		if ($(window).width() <=400) {
+			$("#product_image").removeClass("col-xs-7");
+			$("#product_details").removeClass("col-xs-5");
+		}
+		else {
+			$("#product_image").addClass("col-xs-7");
+			$("#product_details").addClass("col-xs-5");
+		}
+		$( window ).resize(function() {
+  			if ($(window).width() <=400) {
+  				$("#product_image").removeClass("col-xs-7");
+  				$("#product_details").removeClass("col-xs-5");
+  			}
+  			else {
+  				$("#product_image").addClass("col-xs-7");
+  				$("#product_details").addClass("col-xs-5");
+  			}
+		});
+	</script>
+</template>

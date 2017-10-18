@@ -1,0 +1,32 @@
+
+.cart-product-table {
+	text-align: left;
+	height: 100%;
+	overflow-y: auto;
+
+}
+.cart-quantity {
+	margin-right: 5px;
+	margin-left: 5px;
+}
+.cart-checkoutbox {
+	margin:0 auto;
+	border-radius: 15px;
+	border: 2px solid black;
+	height: 80px;
+	width: 300px;
+	background: rgb(220, 222,230);
+}
+.cart-checkout-table {
+	margin-bottom: 0px;
+
+}
+.cart-checkout-td {
+	border-top: 10px solid;
+}
+
+.cart-checkoutbox a {
+	display: block;
+	width:185px;
+	margin: 0 auto;
+}

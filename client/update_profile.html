@@ -1,0 +1,40 @@
+<template name="update_profile">
+	<article id="shop">
+		<div class="container">
+			<div clsas="row">
+				{{#if logged}}
+				<h2>{{#if eng}}Profile Information{{else}}Πληροφορίες Προφίλ{{/if}}</h2>
+				<form role="form" id ="container_form" name="container_form">
+					<div class="form-group">
+				    	<label for="first name">{{#if eng}}First Name:{{else}}Όνομα:{{/if}}</label>
+				      	<input type="text" class="form-control recipient-form" id="firstname" placeholder="{{#if eng}}Enter First Name{{else}}Όνομα{{/if}}" value="{{firstname}}">
+				    </div>
+				    <div class="form-group">
+				    	<label for="last name">{{#if eng}}Last Name:{{else}}Επίθετο:{{/if}}</label>
+				      	<input type="text" class="form-control recipient-form" id="lastname" placeholder="{{#if eng}}Enter last name{{else}}Επίθετο{{/if}}" value="{{lastname}}">
+				    </div>
+				    <div class="form-group">
+				    	<label for="address">{{#if eng}}Address:{{else}}Διεύθυνση:{{/if}}</label>
+				      	<input type="text" class="form-control recipient-form" id="address" placeholder="{{#if eng}}Enter Address{{else}}Διεύθυνση{{/if}}" value="{{address}}">
+				    </div>
+				    <div class="form-group">
+				    	<label for="region">{{#if eng}}Region:{{else}}Περιοχή:{{/if}}</label>
+				      	<input type="text" class="form-control recipient-form" id="region" placeholder="{{#if eng}}Enter Region{{else}}Περιοχή{{/if}}" value="{{region}}">
+				    </div>
+				    <div class="form-group">
+				    	<label for="postal code">{{#if eng}}Postal Code:{{else}}Ταχυδρομικός κώδικας:{{/if}}</label>
+				      	<input type="text" class="form-control recipient-form" id="postalcode" placeholder="{{#if eng}}Enter Postal Code{{else}}Ταχυδρομικός κώδικας{{/if}}" value="{{postalcode}}">
+				    </div>
+				    <button type="button" class="btn btn-warning js-cancel-button">{{#if eng}}Cancel{{else}}Άκυρο{{/if}}</button>
+				    <button type="submit" class="btn btn-success js-save-button">{{#if eng}}Save{{else}}Αποθήκευση{{/if}}</button>
+				</form>
+				{{else}}
+					<h2>{{#if eng}}You need to be logged in to use this page{{else}}Πρέπει να συνδεθήτε, προκειμένου να χρησιμοποιήσετε την σελίδα αυτή.{{/if}}</h2>
+				{{/if}}
+			</div>
+		</div>
+	</article>
+	<script type="text/javascript">
+		scrollDown("#shop");
+	</script>
+</template>

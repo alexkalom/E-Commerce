@@ -1,0 +1,79 @@
+<template name="admin_manage_tips">
+	<section id="shop">
+		<div class="container">
+			{{#if admin}}
+			<div class="row">
+				<h2>Tip του μήνα</h2>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<h3>Tips για τα μέλια</h3>
+					<form id="container_form1" class="form-horizontal" role="form">
+					{{#each tipshop1}}
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="tip">{{month}} στα ελληνικά:</label>
+						    <div class="col-sm-10">
+						     	<input value="{{text_gr}}" class="form-control" id="{{id_gr}}" name="{{id_gr}}" placeholder="{{month}} στα ελληνικά">
+						    </div>
+						</div>	
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="tip">{{month}} στα αγγλικά:</label>
+						    <div class="col-sm-10">
+						     	<input value="{{text_eng}}" class="form-control" id="{{id_eng}}" name="{{id_eng}}" placeholder="{{month}} στα αγγλικά">
+						    </div>
+						</div>
+					{{/each}}
+					<div class="row">
+						<button type="button" class="btn btn-warning js-button-cancel">Άκυρο</button>
+						<button type="submit" class="btn btn-success">Αποθήκευση αλλαγών</button>
+					</div>
+					</form>
+				</div>
+				<div class="col-sm-6">
+					<h3>Tips για τα Προϊόντα κυψέλης</h3>
+					<form id="container_form2" class="form-horizontal" role="form">
+					{{#each tipshop2}}
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="tip">{{month}} στα ελληνικά:</label>
+						    <div class="col-sm-10">
+						     	<input value="{{text_gr}}" class="form-control" id="{{id_gr}}" name="{{id_gr}}" placeholder="{{month}} στα ελληνικά">
+						    </div>
+						</div>	
+						<div class="form-group">
+							<label class="control-label col-sm-2" for="tip">{{month}} στα αγγλικά:</label>
+						    <div class="col-sm-10">
+						     	<input value="{{text_eng}}" class="form-control" id="{{id_eng}}" name="{{id_eng}}" placeholder="{{month}} στα αγγλικά">
+						    </div>
+						</div>
+					{{/each}}
+					</form>
+				</div>
+			</div>
+				
+			<script type="text/javascript">
+				window.clearInterval(intervalId);
+			</script>
+			{{else}}
+			<div class="container">
+				<h2>This page does not exist HTTP Error 404</h2>
+				<p>You will be redirected automatically to the home page in <span style="color:blue;" id="time">5</span> seconds</p>
+				<script type="text/javascript">
+					var count = 5;
+					var intervalId = setInterval(function () {
+						if (count == 0) {
+							clearInterval(intervalId);
+							Router.go('/');
+						}
+						else {
+							count--;
+							$("#time").html(count);
+						}
+					},1000);
+				</script>
+			</div>		
+			{{/if}}
+		</div>
+	</section>
+
+</template>

@@ -1,0 +1,31 @@
+<template name="thankyou" >
+<article id="shop">
+	<div class="container">
+		{{#if eng}}<h3>Purchase Completed</h3>
+		<p>Thank you very much for your order. A confirmation email has been sent to your account. </p>
+		<p>You will automatically be redirected to the <a id ="home_link" href ="/">home</a> page in <span id="secs"></span></p>
+		{{else}}
+		<h3>Η αγορά ολοκληρώθηκε</h3>
+		<p>Σας ευχαρηστούμε πολύ για την παραγγελία σας. Ένα email επιβεβαίωσης έχει σταλεί στον λογαριασμό σας. </p>
+		<p>Θα μεταφερθείτε αυτόματα στην <a id ="home_link" href ="/">κύρια σελίδα</a> σε <span id="secs"></span></p>
+
+		{{/if}}
+	</div>
+	<script type="text/javascript">
+		var sec = 5;
+		$("#secs").html(sec);
+		$("#home_link").click(function () {
+			clearInterval(intervalId);
+		});
+		var intervalId = setInterval(function () {
+			if (sec == 0) {
+				clearInterval(intervalId);
+				Router.go('/');
+			} else {
+				sec = sec -1;
+				$("#secs").html(sec)
+			}
+		},1000);
+	</script>
+</article>
+</template>

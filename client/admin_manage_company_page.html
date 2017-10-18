@@ -1,0 +1,36 @@
+<template name="admin_manage_company_page">
+	<section id="shop">
+		<div class="container">
+			{{#if admin}}
+			<h1>Διαχήρηση σελίδας η Επιχείρηση</h1>
+			  <form id = "container_form">
+			    <textarea id="mytextarea">{{content}}</textarea>
+			    <button class="btn btn-warning js-form-cancel">Άκυρο</button>
+			    <button class="btn btn-success" type="submit">Αποθήκευση</button>
+			  </form>
+			<script type="text/javascript">
+				window.clearInterval(intervalId);
+			</script>	
+			{{else}}
+			<div class="container">
+				<h2>This page does not exist HTTP Error 404</h2>
+				<p>You will be redirected automatically to the home page in <span style="color:blue;" id="time">5</span> seconds</p>
+				<script type="text/javascript">
+					var count = 5;
+					var intervalId = setInterval(function () {
+						if (count == 0) {
+							clearInterval(intervalId);
+							Router.go('/');
+						}
+						else {
+							count--;
+							$("#time").html(count);
+						}
+					},1000);
+				</script>
+			</div>		
+			{{/if}}
+		</div>
+	</section>
+
+</template>

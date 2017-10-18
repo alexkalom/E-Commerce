@@ -1,0 +1,31 @@
+<template name="contact">
+	<article id="shop" >
+		<div class="container">
+			{{#if eng}}
+			<h1>Contact</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum congue arcu vitae rhoncus auctor. Duis efficitur nisl volutpat vestibulum ullamcorper. Aenean condimentum magna vitae nulla scelerisque viverra. Ut dignissim eros a felis accumsan, vitae eleifend quam tincidunt. In ac arcu dapibus, ornare nunc fringilla, dictum libero. Suspendisse erat dolor, varius eu dapibus sit amet, pellentesque sit amet magna. Nunc tempus arcu blandit arcu euismod vulputate. Vestibulum posuere lacinia sagittis. Proin fermentum ut mauris quis pulvinar. Curabitur malesuada nulla id ipsum iaculis, id tristique ligula commodo. Nam faucibus ullamcorper nulla, sit amet interdum ligula mollis ac. Nam fermentum est eget iaculis euismod. Nunc iaculis convallis ex, eget egestas risus iaculis ullamcorper. Phasellus leo justo, dictum nec molestie pretium, lobortis sit amet justo.</p>
+			<ul style="list-style-type: none;">
+				<li><span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>&nbsp; &nbsp; +30 6983003640</li>
+				<li><span class="glyphicon glyphicon-envelope" aria-hidden="true"> kalomiros7@gmail.com</span></li>
+			</ul>
+			{{else}}
+				{{{content_gr}}}
+			{{/if}}
+			<form role="form" id="container_form" name="container_form">
+			  <div class="form-group">
+			    <label for="email">{{#if eng}}Email address:{{else}}Ηλεκτρονική διεύθυνση:{{/if}}</label>
+			    <input type="email" class="form-control" id="email" name="email">
+			  </div>
+			  <div class="form-group">
+			    <label for="message">{{#if eng}}Message:{{else}}Μύνημα:{{/if}}</label>
+			    <textarea class="form-control" id="message" name="message"></textarea>
+			  </div>
+			  <button type="submit" class="btn btn-default">{{#if eng}}Send{{else}}Αποστολή{{/if}}</button>
+			</form>
+		</div>
+	</article>
+	<script type="text/javascript">
+		scrollDown("#shop");
+	</script>
+
+</template>

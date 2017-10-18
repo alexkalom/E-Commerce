@@ -1,0 +1,147 @@
+<template name="admin_home">
+	<section id="shop">
+		<div class="container">
+			{{#if admin}}
+			<div clsas="row">
+				<h2>Νέες Παραγγελίες</h2>
+			</div>
+			{{#each orders}}
+				<!-- Modal -->
+				<div id="modal_{{_id}}" class="modal fade" role="dialog">
+				  <div class="modal-dialog">
+
+				    <!-- Modal content-->
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal">&times;</button>
+				        <h4 class="modal-title">Λεπτομέριες Παραγγελίας</h4>
+				      </div>
+				      <div class="modal-body">
+				      	<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#recipientsinfo_{{_id}}">Πληροφορίες Παραλήπτη</button>
+						<div id="recipientsinfo_{{_id}}" class="collapse">
+						  	<form class="form-inline recipient-info" role="form">
+							  <div class="form-group">
+							    <label for="firstname">Όνομα:</label>
+							    <p>{{firstname}}</p>
+							  </div>
+							  <div class="form-group">
+							    <label for="lastname">Επίθετο:</label>
+							    <p>{{lastname}}</p>
+							  </div>						
+							</form>
+							<form class="form-inline recipient-info" role="form">
+							  <div class="form-group">
+							    <label for="email">Email:</label>
+							    <p>{{email}}</p>
+							  </div>
+							  <div class="form-group">
+							    <label for="region">Περιοχή:</label>
+							    <p>{{region}}</p>
+							  </div>						
+							</form>
+							<form class="form-inline recipient-info" role="form">
+							  <div class="form-group">
+							    <label for="address">Διεύθυνση:</label>
+							    <p>{{address}}</p>
+							  </div>
+							  <div class="form-group">
+							    <label for="postalcode">Ταχυδρομικός κώδικας:</label>
+							    <p>{{postalcode}}</p>
+							  </div>						
+							</form>
+						</div>
+
+				        <!-- table with order items -->
+				        <table class="table table-stripped">
+							<thead>
+								<tr>
+									<th>Εικόνα</th>
+							        <th>Προϊόν</th>
+							        <th>Τιμή</th>
+							        <th>Ποσότητα</th>
+						      	</tr>
+							</thead>
+							<tbody>
+							{{#each meliaproduct _id}}
+							<tr>
+							{{#with meliaproduct_details _id}}
+								<td><img style="max-width: 75px; max-height: 75px;" src="{{img_src}}" alt="{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}" /></td>
+								<td>{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}</td>
+								<td>{{price}} <span class="glyphicon glyphicon-euro" aria-hidden="true"></span></td>
+							{{/with}}
+								<td><span class="cart-quantity"> {{quantity}}</span></td>
+							</tr>
+							{{/each}}
+							{{#each kallintikaproduct _id}}
+							<tr>
+							{{#with kallintikaproduct_details _id}}
+								<td><img style="max-width: 75px; max-height: 75px;" src="{{img_src}}" alt="{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}" /></td>
+								<td>{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}</td>
+								<td>{{price}} <span class="glyphicon glyphicon-euro" aria-hidden="true"></span></td>
+								{{/with}}
+								<td><span class="cart-quantity"> {{quantity}}</span></td>
+							</tr>
+							{{/each}}
+							</tbody>
+						</table>
+
+
+				      </div>
+				      <div class="modal-footer">
+				      	<button type="button" class="btn btn-success js-button-complete" data = "{{_id}}">Ολοκληρώθηκε</button>
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Κλείσιμο</button>
+				      </div>
+				    </div>
+
+				  </div>
+				</div>
+			{{/each}}
+
+				<table class="table table-striped">
+				    <thead>
+				      <tr>
+				        <th>Πραγματοποιήθηκε στις</th>
+				        <th>Αριθμός Τεμαχίων</th>
+				        <th>Συνολική Τιμή</th>
+				        <th>Τρόπος Πληρωμής</th>
+				        <th>Κατάσταση</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				    	{{#each orders}}
+							<tr class="js-order-select orders-table-tr" data ="{{_id}}">
+								<td>{{orderedOn _id}}</td>
+								<td>{{Num_Items _id}}</td>
+								<td>{{Total_Price _id}}</td>
+								<td>{{payment}}</td>
+								<td>{{status _id}}</td>
+							</tr>
+						{{/each}}
+				    </tbody>
+				</table>
+			<script type="text/javascript">
+				window.clearInterval(intervalId);
+			</script>	
+			{{else}}
+			<div class="container">
+				<h2>This page does not exist HTTP Error 404</h2>
+				<p>You will be redirected automatically to the home page in <span style="color:blue;" id="time">5</span> seconds</p>
+				<script type="text/javascript">
+					var count = 5;
+					var intervalId = setInterval(function () {
+						if (count == 0) {
+							clearInterval(intervalId);
+							Router.go('/');
+						}
+						else {
+							count--;
+							$("#time").html(count);
+						}
+					},1000);
+				</script>
+			</div>		
+			{{/if}}
+		</div>
+	</section>
+
+</template>

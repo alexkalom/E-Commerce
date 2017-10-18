@@ -1,0 +1,64 @@
+<template name = "cart">
+	<article id="shop">
+		<div class="container">
+			<div clsas="row">
+				<h3>{{#if eng}}Your cart{{else}}Το καλάθι σου{{/if}}</h3>
+
+				<div class="cart-product-table">
+					<table class="table table-stripped">
+						<thead>
+							<tr>
+								<th>{{#if eng}}Product Image{{else}}Εικόνα{{/if}}</th>
+						        <th>{{#if eng}}Product{{else}}Προϊόν{{/if}}</th>
+						        <th>{{#if eng}}Price{{else}}Τιμή{{/if}}</th>
+						        <th>{{#if eng}}Quantity{{else}}Ποσότητα{{/if}}</th>
+						        <th></th>
+					      	</tr>
+						</thead>
+						<tbody>
+						{{#each meliaproduct}}
+						<tr>
+						{{#with meliaproduct_details _id}}
+							<td><img style="max-width: 75px; max-height: 75px;" src="{{img_src}}" alt="{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}" /></td>
+							<td>{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}</td>
+							<td>{{price}} <span class="glyphicon glyphicon-euro" aria-hidden="true"></span></td>
+						{{/with}}
+							<td><a href="#" class="js-minus-item-to-cart1 not-a-link"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a> <span class="cart-quantity"> {{quantity}}</span> <a href="#" class="js-plus-item-to-cart1 not-a-link"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></td>
+							
+
+							<td style="text-align: right;"><a href="#" class="js-remove-item-from-cart1 not-a-link"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+						</tr>
+						{{/each}}
+						{{#each kallintikaproduct}}
+						<tr>
+						{{#with kallintikaproduct_details _id}}
+							<td><img style="max-width: 75px; max-height: 75px;" src="{{img_src}}" alt="{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}" /></td>
+							<td>{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}</td>
+							<td>{{price}} <span class="glyphicon glyphicon-euro" aria-hidden="true"></span></td>
+							{{/with}}
+							<td><a href="#" class="js-minus-item-to-cart2 not-a-link"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a> <span class="cart-quantity"> {{quantity}}</span> <a href="#" class="js-plus-item-to-cart2 not-a-link"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></td>
+
+							<td style="text-align: right;"><a href="#" class="js-remove-item-from-cart2 not-a-link"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+						</tr>
+						{{/each}}
+						</tbody>
+					</table>
+				</div>
+				<div class="cart-checkoutbox">
+					<table class="table cart-checkout-table">
+						<tbody>
+							<tr>
+								<td style="border: 0px solid;">{{#if eng}}TOTAL (ITEMS {{NUM_OF_ITEMS}}){{else}}Σύνολο (Τεμάχια {{NUM_OF_ITEMS}}){{/if}}</td>
+								<td style="border: 0px solid; text-align: right;"> {{#if eng}}PRICE: {{TOTAL_PRICE}}{{else}}Τιμή: {{TOTAL_PRICE}}{{/if}}<span class="glyphicon glyphicon-euro" aria-hidden="true"></span></td>
+							</tr>
+						</tbody>
+					</table>
+					<a class="btn btn-primary js-shoppingcart-checkout" href="#"> {{#if eng}}CHECKOUT NOW{{else}}ΜΕΤΑΒΑΣΗ ΣΤΟ ΤΑΜΕΙΟ{{/if}} </a>
+				</div>
+			</div>
+		</div>
+	</article>
+	<script type="text/javascript">
+		scrollDown("#shop");
+	</script>
+</template>

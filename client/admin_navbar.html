@@ -1,0 +1,37 @@
+<template name="admin_navbar">
+	{{#if admin}}
+	<nav class="navbar navbar-default navbar-fixed-top">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="/">Κύρια Σελίδα</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	    	<li><a href="/admin">Νέες παραγγελίες</a></li>
+	    	<li><a href = "/admin_orders_history">Ιστορικό Παραγγελιών</a></li>
+	    	<li><a href = "/admin_users">Χρήστες</a></li>
+		    <li><a href="/admin_new_product">Εισαγωγή Προϊόντος</a></li>
+		    <li class="dropdown">
+		        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Όλα τα Προϊόντα
+		        <span class="caret"></span></a>
+		        <ul class="dropdown-menu">
+		          <li><a href="/admin_melia_products">Μέλια</a></li>
+		          <li><a href="/admin_kalli_products">Προϊόντα Κυψέλης</a></li>
+		        </ul>
+		    </li>
+		    <li class="dropdown">
+			        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Άλλες Επιλογές
+			        <span class="caret"></span></a>
+			        <ul class="dropdown-menu">
+			          <li><a href="/admin_manage_salespoints">Διαχήρηση Σημείων Πώλησης</a></li>
+			          <li><a href="/admin_manage_tips">Διαχήρηση Tip του μήνα</a></li>
+			          <li><a href="/admin_manage_company_page">Διαχήρηση της σελίδας Επιχείρηση</a></li>
+			          <li><a href="/admin_manage_contact_page">Διαχήρηση της σελίδας Επικοινωνία</a></li>
+			          <li><a href="/admin_manage_mail">Διαχήρηση Email</a></li>	    
+			        </ul>
+			      </li>
+		    
+	    </ul>
+	  </div>
+	</nav>
+	{{/if}}
+</template>

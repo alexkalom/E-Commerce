@@ -1,0 +1,195 @@
+/* CSS declarations go here */
+
+html, body {
+	height: 100%;
+	margin:0px;
+	padding: 0px;
+}
+
+#map {
+    height: 100%;
+}
+
+
+.my-navbar-toggle {
+	border:none; 
+	padding-top:5px; 
+	padding-bottom:0px; 
+	margin-top:0px; 
+	margin-bottom:0px; 
+	position:relative; right:20px; 
+	padding-bottom: 5px; 
+	border-radius:0px
+}
+
+
+#banner {
+	height: 100%;
+	padding-top: 50px;
+	background-image: url("banner-background.jpg");
+	background-position:  top center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	text-align: center;
+	color:white;
+}
+.welcome {
+	width: 300px;
+	margin: 0 auto;
+	margin-top: 30px;
+	padding-bottom: 10px;
+	/*border: 1px solid white;*/
+}
+
+/* banner links */
+.bannerlink {
+    /*padding:15px;
+    width:110px;*/
+    width:150px;
+	/*height: 100px;
+	border-radius: 50px;
+	padding-top: 40px;*/
+	border: 1px solid white;
+	color:white;
+    /*display: inline-block;
+    border:1px solid white;
+    border-top: none;
+    font-size:12pt;
+    text-align:center;
+    text-decoration:none;
+    color:white;*/
+}
+
+.bannerlink-margin-left {
+	margin-left: 2px;
+}
+.bannerlink-margin-right {
+	margin-right: 2px;
+}
+
+.bannerlink:hover{
+    background: rgba(255,255,255,0.3);
+}
+/*.bannerlink:visited {
+    text-decoration:none;
+    color:white;
+}*/
+
+
+#shop {
+	height:100%;
+	padding-top: 55px;
+}
+.product-container {
+	/*height: 400px;*/
+}
+.product-thumbnail {
+	max-height: 200px;
+	max-width: 200px;
+	float:left;
+	padding-right: 10px;
+}
+
+
+@media (min-width: 750px) {
+	.welcome {
+		width: 400px;
+		margin: 0 auto;
+		margin-top: 10%;
+		padding-bottom: 10px;
+		/*border: 1px solid white;*/
+	}
+
+	/* banner links */
+	.bannerlink {
+	    /*padding:15px;
+	    width: 150px;*/
+	    width:150px;
+	    /*height: 150px;
+	    border-radius: 50px;
+	    padding-top: 40px;/*
+	    /*display: inline-block;
+	    border:1px solid white;
+	    border-top: none;
+	    font-size:12pt;
+	    text-align:center;
+	    text-decoration:none;
+	    color:white;*/
+	}
+	.bannerlink-margin-left {
+		margin-left: 2px;
+	}
+	.bannerlink-margin-right {
+		margin-right: 2px;
+	}
+
+}
+@media (min-width: 992px) {
+	.narrow-product {
+		width: 200px;
+		margin:0 auto;
+	}
+}
+
+@media(max-width: 992px) {
+	.product-thumbnail {
+		max-height: 150px;
+		max-width: 150px;
+		float:left;
+		padding-right: 10px;
+	}
+}
+
+@media (max-width : 770px) {
+	.narrow-product {
+		width: 200px;
+		margin:0 auto;
+	}
+	.product-thumbnail {
+		max-height: 200px;
+		max-width: 200px;
+		float:left;
+		padding-right: 10px;
+	}
+}
+
+.product-thumbnail-details {
+	
+}
+
+
+
+.product-name {
+	text-decoration: none;
+	color: black;
+	/*text-align: center;*/
+}
+.product-name:hover {
+	text-decoration: none;
+	color: black;
+	/*text-align: center;*/
+}
+
+
+
+.product-details-image {
+	max-width: 95%;
+	max-height: 350px;
+	margin-top: 20px;
+}
+@media (min-width: 750px) {
+	.product-details-image {
+		max-width: 350px;
+		max-height: 350px;
+		margin-top: 20px;
+	}
+}
+
+.margin-top-10 {
+	margin-top: 10px;
+}
+
+#add_to_cart_quantiy {
+	text-align: center;
+	width: 26px;
+}

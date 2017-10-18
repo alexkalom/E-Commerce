@@ -1,0 +1,112 @@
+<template name="checkout">
+	<article id="shop">
+		<div class="container">
+			<form role="form" id ="container_form" name="container_form">
+				<!--RECIPIENT INFO -->
+				<h2>{{#if eng}}Recipient's information{{else}}Πληροφορίες Παραλήπτη{{/if}}</h2>
+			    <div class="form-group">
+			    	<label for="first name">{{#if eng}}First Name{{else}}Όνομα{{/if}}:</label>
+			      	<input type="text" class="form-control recipient-form" id="firstname" placeholder="Enter First Name" value="{{firstname}}">
+			    </div>
+			    <div class="form-group">
+			    	<label for="last name">{{#if eng}}Last Name{{else}}Επόνυμο{{/if}}:</label>
+			      	<input type="text" class="form-control recipient-form" id="lastname" placeholder="Enter Last Name" value="{{lastname}}">
+			    </div>
+			    <div class="form-group">
+			    	<label for="email">Email:</label>
+			      	<input type="email" class="form-control recipient-form" id="email" placeholder="Enter Email" value="{{email}}">
+			    </div>
+			    <div class="form-group">
+			    	<label for="address">{{#if eng}}Address{{else}}Διεύθυνση{{/if}}:</label>
+			      	<input type="text" class="form-control recipient-form" id="address" placeholder="Enter Address" value="{{address}}">
+			    </div>
+			    <div class="form-group">
+			    	<label for="region">{{#if eng}}Region{{else}}Περιοχή{{/if}}:</label>
+			      	<input type="text" class="form-control recipient-form" id="region" placeholder="Enter Region" value="{{region}}">
+			    </div>
+			    <div class="form-group">
+			    	<label for="postal code">{{#if eng}}Postal Code{{else}}Ταχυδρομικός κώδικας{{/if}}:</label>
+			      	<input type="text" class="form-control recipient-form" id="postalcode" placeholder="Enter Postal Code" value="{{postalcode}}">
+			    </div>
+
+
+			    <!--ORDER PREVIEW -->
+
+			    <h2>{{#if eng}}Order Preview{{else}}Προεπισκόπηση Παραγγελίας{{/if}}</h2>
+
+			    <table class="table table-striped order-preview">
+				    <thead>
+				      <tr>
+				        <th>{{#if eng}}Product Name{{else}}Προϊόν{{/if}}</th>
+				        <th>{{#if eng}}Quantity{{else}}Ποσότητα{{/if}}</th>
+				        <th>{{#if eng}}Price{{else}}Τιμή{{/if}}</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				    	{{#each meliaproduct}}
+						<tr>
+						{{#with meliaproduct_details _id}}
+							<td>{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}</td>
+						{{/with}}
+							<td>{{quantity}}</td>
+						{{#with meliaproduct_details _id}}
+							<td>{{price}} <span class="glyphicon glyphicon-euro" aria-hidden="true"></span></td>
+						{{/with}}
+						</tr>
+						{{/each}}
+						{{#each kallintikaproduct}}
+						<tr>
+						{{#with kallintikaproduct_details _id}}
+							<td>{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}</td>
+						{{/with}}
+							<td>{{quantity}}</td>
+						{{#with kallintikaproduct_details _id}}
+							<td>{{price}} <span class="glyphicon glyphicon-euro" aria-hidden="true"></span></td>
+						{{/with}}
+						</tr>
+						{{/each}}
+				      	<tr>
+				      		<td></td>
+				      		<td><strong>Total: </strong></td>
+				      		<td>{{TOTAL_PRICE}} <span class="glyphicon glyphicon-euro" aria-hidden="true"></span></td>
+				      	</tr>
+				    </tbody>
+  				</table>
+
+
+  				<!--PAYMENT METHOD-->
+
+			    <h2>{{#if eng}}Purchase Method{{else}}Τρόποι πληρωμής{{/if}}</h2>
+
+			    <div class="checkbox">
+				    <label class="h3"><input type="checkbox" id="option1" name="option1">{{#if eng}} Paid on delivery{{else}}Πληρωμή με αντικαταβολή{{/if}}</label>
+				</div>
+				<div class="checkbox">
+				    <label class="h3"><input type="checkbox" id="option2" name="option2"> {{#if eng}}Bank transfer 1 (Account 1){{else}}Κατάθεση σε τράπεζα 1 (Λογαριασμός 1){{/if}}</label>
+				</div>
+				<div class="checkbox">
+				    <label class="h3"><input type="checkbox" id="option3" name="option3"> {{#if eng}}Bank transfer 2 (Account 2){{else}}Κατάθεση σε τράπεζα 2 (Λογαριασμός 2){{/if}}</label>
+				</div>
+				<div class="checkbox">
+				    <label class="h3"><input type="checkbox" id="option4" name="option4"> {{#if eng}}Commodities exchange{{else}}Ανταλλαγή με προϊόντα ή υπηρεσίες κατόπιν συνεννόησης{{/if}}</label>
+				</div>
+				
+				<button type="submit" id="sbmt_btn" class="btn btn-success complete-checkout-btn ">{{#if eng}}Complete Checkout{{else}}Ολοκλήρωση Παραγγελίας{{/if}}</button>
+			</form>
+			<!--
+			<form role="form" id="card_info" name="card_info">
+				<h4>Or </h4>
+		        <div class="row">
+		          	<div class="col-sm-6 col-xs-12">
+		            	<div id="payment-form"></div>
+		        	</div>
+		    	</div>
+		    	<button type="submit" class="btn btn-success complete-checkout-btn">Complete Checkout</button>
+		    </form> 
+		-->
+		</div>
+	</article>
+	<script type="text/javascript">
+		scrollDown("#shop");
+	</script>
+</template>

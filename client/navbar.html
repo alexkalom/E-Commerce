@@ -1,0 +1,35 @@
+<template name="navbar">
+	<nav class="navbar navbar-default navbar-fixed-top">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span> 
+      	  </button>
+	      <a class="navbar-brand" href="/">{{#if eng}}Home{{else}}Αρχική{{/if}}</a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="myNavbar">
+		    <ul class="nav navbar-nav">
+		    	<li><a href = "/company">{{#if eng}}Company{{else}}Η Επιχείρηση{{/if}}</a></li>		    
+			      <li class="dropdown">
+			        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{#if eng}}Products{{else}}Προϊόντα{{/if}}
+			        <span class="caret"></span></a>
+			        <ul class="dropdown-menu">
+			          <li><a href="/melia">{{#if eng}}Honey{{else}}Μέλια{{/if}}</a></li>
+			          <li><a href="/proiontakypselis">{{#if eng}}Hive products{{else}}Προϊόντα κυψέλης{{/if}}</a></li>	    
+			        </ul>
+			      </li>
+			      <li><a href = "/katastimata">{{#if eng}}Stores{{else}}Σημεία Πώλησης{{/if}}</a></li>
+			      <li><a href="/contact">{{#if eng}}Contact{{else}}Επικοινωνία{{/if}}</a></li>
+		    </ul>
+		    <ul class="nav navbar-nav navbar-right">
+		    	<li><p class="navbar-text">{{> loginButtons}}</p></li>
+		    	<li><a href="#" class="js-cart-toggle"><img id="shoppingcart-icon" style="width:25px; height:25px; position: relative; bottom: 3px;" src="/add_to_cart.png"></a></li>
+		    	<li><a href="#" class="js-lang-toggle" data-toggle="tooltip" title="{{#if eng}}Ελληνικά{{else}}English{{/if}}"><img style="width:20px;" src="{{#if eng}}/gr_icon.png{{else}}/eng_icon.png{{/if}}"></a></li>
+		    	{{isLogged}}
+		    </ul>
+		</div>
+	  </div>
+	</nav>
+</template>

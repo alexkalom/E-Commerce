@@ -1,0 +1,38 @@
+.shoppingcart {
+	position:fixed;
+	right: 0px;
+	background: white;
+	height: 100%;
+	width: 0px;
+	z-index: 10000;
+}
+
+
+.cart-close-button {
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+.product-table {
+	text-align: center;
+	height: 100%;
+	padding-bottom: 90px;
+	overflow-y: auto;
+
+}
+
+.checkoutbox {
+	position: fixed;
+	bottom: 0px;
+	height: 80px;
+	width: 400px;
+	background: rgb(220, 222,230);
+}
+.checkout-table {
+	margin-bottom: 0px;
+}
+.checkoutbox a {
+	display: block;
+	width: 165px;
+	margin: 0 auto;
+}

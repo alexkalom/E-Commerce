@@ -1,0 +1,80 @@
+<template name="kallintika2">
+	<article id="shop">
+		<div class="container">
+			<div class="alert alert-warning" style="margin-top: 10px;">
+			  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			  <strong>{{#if eng}} This month's tip!{{else}}Το tip του μήνα!{{/if}}</strong> {{tip}}
+			</div>
+
+			{{#each product}}
+					<!-- Modal -->
+					<div id="modal_{{_id}}" class="modal fade" role="dialog">
+					  <div class="modal-dialog">
+
+					    <!-- Modal content-->
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal">&times;</button>
+					        <h4 class="modal-title">{{#if eng}}Product Details{{else}}Λεπτομέριες Προϊόντος{{/if}}</h4>
+					      </div>
+					      <div class="modal-body">
+					        <div style="width:95%;">
+									<div>
+										<h3>{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}</h3>
+									</div>
+									<a href="{{img_src}}"><img class="product-thumbnail" src="{{img_src}}" alt="{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}" /></a>
+									<div class="product-thumbnail-details" >
+										<p>{{#if eng}}Also contains:{{contains_eng}} {{else}}Περιέχει επίσης: {{contains_gr}}{{/if}}</p>
+										<p style="padding-top:10px;">{{#if eng}}Price: {{else}}Τιμή: {{/if}}{{price}} EUR {{#if available}}<a href="#" class="js-add-to-cart" data-toggle="tooltip" title="{{#if eng}}Add to cart {{else}}Προσθήκη στο καλάθι {{/if}}"><img style="width:25px; height:25px; position: relative; bottom: 5px; left: 20px;" src="/add_to_cart.png"></a>{{/if}} <a href="#" style="position:relative; left: 30px; bottom:3px;" class="js-add-to-wishlist" data-toggle="tooltip" title="{{#if eng}}Add to Watchlist {{else}}Προσθήκη στη λίστα επιθυμιών{{/if}}"><img style="width:25px; height:25px;" src="/watchlist_icon.png"></a></p>
+										{{#if available}}{{else}}<p>{{#if eng}}Out of stock{{else}}Το προϊόν εξαντλήθηκε{{/if}}</p>{{/if}}
+										<p style="color:grey;">{{#if eng}}Description{{else}}Περιγραφή{{/if}}</p>
+										<p class="description" data ="{{_id}}">{{#if eng}}{{description_eng}}{{else}}{{description_gr}}{{/if}}</p>
+									</div>
+								</div>
+
+
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">{{#if eng}}Close{{else}}Κλείσιμο{{/if}}</button>
+					      </div>
+					    </div>
+
+					  </div>
+					</div>
+				{{/each}}
+
+
+
+
+
+			<div clsas="row">
+				{{#each product}}
+				<div class="col-sm-6 product-container" id= "product_{{_id}}" style="height: 350px;">
+					<div style="width:95%;">
+						<div>
+							<h3>{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}</h3>
+						</div>
+						<a href="{{img_src}}"><img class="product-thumbnail" src="{{img_src}}" alt="{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}" /></a>
+						<div class="product-thumbnail-details" >
+							<p>{{#if eng}}Also contains:{{contains_eng}} {{else}}Περιέχει επίσης: {{contains_gr}}{{/if}}</p>
+							<p style="padding-top:10px;">{{#if eng}}Price: {{else}}Τιμή: {{/if}}{{price}} EUR {{#if available}}<a href="#" class="js-add-to-cart" data-toggle="tooltip" title="{{#if eng}}Add to cart {{else}}Προσθήκη στο καλάθι {{/if}}"><img style="width:25px; height:25px; position: relative; bottom: 5px; left: 20px;" src="/add_to_cart.png"></a>{{/if}} <a href="#" style="position:relative; left: 30px; bottom:3px;" class="js-add-to-wishlist" data-toggle="tooltip" title="{{#if eng}}Add to Watchlist {{else}}Προσθήκη στη λίστα επιθυμιών{{/if}}"><img style="width:25px; height:25px;" src="/watchlist_icon.png"></a></p>
+							{{#if available}}{{else}}<p>{{#if eng}}Out of stock{{else}}Το προϊόν εξαντλήθηκε{{/if}}</p>{{/if}}
+							<p style="color:grey;">{{#if eng}}Description{{else}}Περιγραφή{{/if}}</p>
+							<p class="description" data ="{{_id}}">{{#if eng}}{{trim description_eng _id}}{{else}}{{trim description_gr _id}}{{/if}}</p>
+							{{#if eng}}{{#if trimed description_eng _id}}<a href="#" class="js-read-more" data="{{_id}}">Read more</a>{{/if}}
+							{{else}}{{#if trimed description_gr _id}}<a href="#" class="js-read-more" data="{{_id}}">Read more</a>{{/if}}{{/if}}
+						</div>
+					</div>
+				</div>
+				{{/each}}
+			</div>
+		</div>
+		<div style="height=30px; padding-top:30px"><p style="visibility: hidden;">Meli Melitini</p></div>
+	</article>
+	<script type="text/javascript">
+		$(document).ready(function(){
+	    	$('[data-toggle="tooltip"]').tooltip(); 
+		});
+		scrollDown("#shop");
+	</script>
+</template>

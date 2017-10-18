@@ -1,0 +1,8 @@
+<template name="_loginButtonsAdditionalLoggedInDropdownActions">
+	{{#if admin}}
+	<button class="btn btn-default btn-block" id="login-buttons-admin">{{#if eng}}Control Panel{{else}}Πίνακας Ελέγχου{{/if}}</button>
+	{{/if}}
+    <button class="btn btn-default btn-block" id="login-buttons-edit-profile">{{#if eng}}Edit profile{{else}}Ενημέρωση Προφιλ{{/if}}</button>
+    <button class="btn btn-default btn-block" id="login-buttons-wishlist">{{#if eng}}My Wishlist{{else}} Η λίστα επιθυμιών μου{{/if}}</button>
+    <button class="btn btn-default btn-block" id="login-buttons-orders">{{#if eng}}My Orders{{else}}Οι παραγγελίες μου{{/if}}</button>
+</template>

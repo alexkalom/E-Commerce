@@ -1,0 +1,95 @@
+<template name="admin_update_sales_point">
+	<article id="shop">
+		<div class="container">
+			{{#if admin}}
+			<div clsas="row">
+				<h2 style="text-align:center">Ενημέρωση Σημείου Πώλησης</h2>
+				<form id="container_form" data="{{_id}}" class="form-horizontal" role="form">
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="name">Όνομα στα ελληνικά:</label>
+					    <div class="col-sm-10">
+					     	<input type="text" class="form-control" id="name_gr" name="name_gr" placeholder="Όνομα καταστήματος στα ελληνικά" value = "{{name_gr}}">
+					    </div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="name">Όνομα στα αγγλικά:</label>
+					    <div class="col-sm-10">
+					     	<input type="text" class="form-control" id="name_eng" name="name_eng" placeholder="Όνομα καταστήματος στα αγγλικά" value="{{name_eng}}">
+					    </div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="info">Επιπρόσθετες Πληροφορίες στα ελληνικά:</label>
+					    <div class="col-sm-10">
+					     	<input type="text" class="form-control" id="extra_gr" name="extra_gr" placeholder="Επιπρόσθετες Πληροφορίες στα ελληνικά" value = "{{extra_gr}}">
+					    </div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="info">Επιπρόσθετες Πληροφορίες στα αγγλικά:</label>
+					    <div class="col-sm-10">
+					     	<input type="text" class="form-control" id="extra_eng" name="extra_eng" placeholder="Επιπρόσθετες Πληροφορίες στα αγγλικά" value = "{{extra_eng}}">
+					    </div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="address">Διεύθυνση στα ελληνικά:</label>
+					    <div class="col-sm-10">
+					     	<input type="text" class="form-control" id="address_gr" name="address_gr" placeholder="Διεύθυνση στα ελληνικά" value = "{{address_gr}}">
+					    </div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="address">Διεύθυνση στα αγγλικά:</label>
+					    <div class="col-sm-10">
+					     	<input type="text" class="form-control" id="address_eng" name="address_eng" placeholder="Διεύθυνση στα αγγλικά" value = "{{address_eng}}">
+					    </div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="phone">Τηλέφωνο:</label>
+					    <div class="col-sm-10">
+					     	<input type="text" class="form-control" id="phone" name="phone" placeholder="Τηλέφωνο " value = "{{phone}}">
+					    </div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="coordinates">Γεωγραφικό πλάτος:</label>
+					    <div class="col-sm-10">
+					     	<input type="text" class="form-control" id="latitude" name="latitude" placeholder="Γεωγραφικό Πλάτος " value= "{{latitude}}">
+					    </div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="coordinates">Γεωγραφικό Μήκος:</label>
+					    <div class="col-sm-10">
+					     	<input type="text" class="form-control" id="longtitude" name="longtitude" placeholder="Γεωγραφικό μήκος " value = "{{longtitude}}">
+					    </div>
+					</div>
+					<div class="form-group"> 
+					    <div class="col-sm-offset-2 col-sm-10">
+					      <button type="button" class="btn btn-warning js-button-cancel">Άκυρο</button>
+					      <button type="submit" class="btn btn-success">Αποθήκευση</button>
+					      <a class="btn btn-danger js-remove-salespoint" data="{{_id}}" href="#">Διαγραφή Σημείου Πώλησης</a>
+					    </div>
+					</div>
+				</form>
+			</div>
+			<script type="text/javascript">
+				window.clearInterval(intervalId);
+			</script>
+			{{else}}
+			<div class="container">
+				<h2>This page does not exist HTTP Error 404</h2>
+				<p>You will be redirected automatically to the home page in <span style="color:blue;" id="time">5</span> seconds</p>
+				<script type="text/javascript">
+					var count = 5;
+					var intervalId = setInterval(function () {
+						if (count == 0) {
+							clearInterval(intervalId);
+							Router.go('/');
+						}
+						else {
+							count--;
+							$("#time").html(count);
+						}
+					},1000);
+				</script>
+			</div>	
+			{{/if}}
+		</div>
+	</article>
+</template>

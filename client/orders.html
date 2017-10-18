@@ -1,0 +1,91 @@
+<template name="orders">
+	<article id="shop">
+		<div class="container">
+			{{#if logged}}
+				<h2>{{#if eng}}Your Order History{{else}}Οι παραγγελίες σου{{/if}}</h2>
+				{{#each orders}}
+					<!-- Modal -->
+					<div id="modal_{{_id}}" class="modal fade" role="dialog">
+					  <div class="modal-dialog">
+
+					    <!-- Modal content-->
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal">&times;</button>
+					        <h4 class="modal-title">{{#if eng}}Order Details{{else}}Λεπτομέριες Παραγγελίας{{/if}}</h4>
+					      </div>
+					      <div class="modal-body">
+					        <!-- table with order items -->
+					        <table class="table table-stripped">
+								<thead>
+									<tr>
+										<th>{{#if eng}}Product Image{{else}}Εικόνα Προϊόντος{{/if}}</th>
+								        <th>{{#if eng}}Product{{else}}Προϊόν{{/if}}</th>
+								        <th>{{#if eng}}Price{{else}}Τιμή{{/if}}</th>
+								        <th>{{#if eng}}Quantity{{else}}Ποσότητα{{/if}}</th>
+							      	</tr>
+								</thead>
+								<tbody>
+								{{#each meliaproduct _id}}
+								<tr>
+								{{#with meliaproduct_details _id}}
+									<td><img style="max-width: 75px; max-height: 75px;" src="{{img_src}}" alt="{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}" /></td>
+									<td>{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}</td>
+									<td>{{price}} <span class="glyphicon glyphicon-euro" aria-hidden="true"></span></td>
+								{{/with}}
+									<td><span class="cart-quantity"> {{quantity}}</span></td>
+								</tr>
+								{{/each}}
+								{{#each kallintikaproduct _id}}
+								<tr>
+								{{#with kallintikaproduct_details _id}}
+									<td><img style="max-width: 75px; max-height: 75px;" src="{{img_src}}" alt="{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}" /></td>
+									<td>{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}</td>
+									<td>{{price}} <span class="glyphicon glyphicon-euro" aria-hidden="true"></span></td>
+									{{/with}}
+									<td><span class="cart-quantity"> {{quantity}}</span></td>
+								</tr>
+								{{/each}}
+								</tbody>
+							</table>
+
+
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-default" data-dismiss="modal">{{#if eng}}Close{{else}}Κλείσιμο{{/if}}</button>
+					      </div>
+					    </div>
+
+					  </div>
+					</div>
+				{{/each}}
+
+				<table class="table table-striped">
+				    <thead>
+				      <tr>
+				        <th>{{#if eng}}Ordered On{{else}}Πραγματοποιήθηκε στις{{/if}}</th>
+				        <th>{{#if eng}}Number Of Items{{else}}Αριθμός Τεμαχίων{{/if}}</th>
+				        <th>{{#if eng}}Total Price{{else}}Συνολική Τιμή{{/if}}</th>
+				        <th>{{#if eng}}Status{{else}}Κατάσταση{{/if}}</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				    	{{#each orders}}
+							<tr class="js-order-select orders-table-tr" data ="{{_id}}">
+								<td>{{orderedOn _id}}</td>
+								<td>{{Num_Items _id}}</td>
+								<td>{{Total_Price _id}}</td>
+								<td>{{status _id}}</td>
+							</tr>
+						{{/each}}
+				    </tbody>
+  				</table>				
+			{{else}}
+				<h2>You need to be logged in for this</h2>
+			{{/if}}
+		</div>
+	</article>
+	<script type="text/javascript">
+		scrollDown("#shop");
+	</script>
+</template>

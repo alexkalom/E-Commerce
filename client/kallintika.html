@@ -1,0 +1,24 @@
+<template name="kallintika">
+	<article id="shop">
+		<div class="container">
+			<div clsas="row">
+				{{#each product}}
+				<div class="col-sm-4">
+					<div class="product-container">
+						<a class="product-name" href="/kallintika/product/{{_id}}"><h3>{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}</h3></a>
+						<a href="/kallintika/product/{{_id}}"><img class="product-thumbnail" src="{{img_src}}" alt="{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}" /></a>
+						<ul class="product-thumbnail-details narrow-product">
+							<li class="product-thumbnail-details-item">{{#if eng}}{{properties_eng}}{{else}}{{properties_gr}}{{/if}}</li>
+							<li class="product-thumbnail-details-item"><span class="glyphicon glyphicon-eur" aria-hidden="true">{{price}}EUR</span></li>
+						</ul>
+					</div>
+				</div>
+				{{/each}}
+			</div>
+		</div>
+	</article>
+	<script type="text/javascript">
+		scrollDown("#shop");
+		//Session.set("currentLocation", "/shop2");
+	</script>
+</template>

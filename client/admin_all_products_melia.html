@@ -1,0 +1,50 @@
+<template name="admin_all_products_melia">
+	{{#if admin}}
+	<article id="shop">
+		<div class="container">
+			<div clsas="row">
+				{{#each product}}
+				<a onclick="Session.set('available', {{available}});" href="/admin/update_melia_product/{{_id}}"><div class="col-sm-6 product-container" style="height: 350px;">
+					<div style="width:95%;">
+						<div>
+							<h3>{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}</h3>
+						</div>
+						<img class="product-thumbnail" src="{{img_src}}" alt="{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}" />
+						<div class="product-thumbnail-details" >
+							<p>{{#if eng}}Also contains:{{contains_eng}} {{else}}Περιέχει επίσης: {{contains_gr}}{{/if}}</p>
+							<p style="padding-top:10px;">{{#if eng}}Price: {{else}}Τιμή: {{/if}}{{price}} EUR {{#if available}}<a href="#" class="js-add-to-cart" data-toggle="tooltip" title="{{#if eng}}Add to cart {{else}}Προσθήκη στο καλάθι {{/if}}"><img style="width:25px; height:25px; position: relative; bottom: 5px; left: 20px;" src="/add_to_cart.png"></a>{{/if}} <a href="#" style="position:relative; left: 30px; bottom:3px;" class="js-add-to-wishlist" data-toggle="tooltip" title="{{#if eng}}Add to Watchlist {{else}}Προσθήκη στη λίστα επιθυμιών{{/if}}"><img style="width:25px; height:25px;" src="/watchlist_icon.png"></a></p>
+							{{#if available}}{{else}}<p>{{#if eng}}Out of stock{{else}}Το προϊόν εξαντλήθηκε{{/if}}</p>{{/if}}
+							<p style="color:grey;">{{#if eng}}Description{{else}}Περιγραφή{{/if}}</p>
+							<p>{{#if eng}}{{trim description_eng}}{{else}}{{trim description_gr}}{{/if}}</p>
+						</div>
+					</div>
+				</div></a>
+				{{/each}}
+			</div>
+		</div>
+	</article>
+	<script type="text/javascript">
+				window.clearInterval(intervalId);
+			</script>	
+		{{else}}
+		<article id="shop">
+		<div class="container">
+			<h2>This page does not exist HTTP Error 404</h2>
+			<p>You will be redirected automatically to the home page in <span style="color:blue;" id="time">5</span> seconds</p>
+			<script type="text/javascript">
+				var count = 5;
+				var intervalId = setInterval(function () {
+					if (count == 0) {
+						clearInterval(intervalId);
+						Router.go('/');
+					}
+					else {
+						count--;
+						$("#time").html(count);
+					}
+				},1000);
+			</script>
+		</div>
+		</article>
+		{{/if}}
+</template>

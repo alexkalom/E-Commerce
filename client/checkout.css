@@ -1,0 +1,16 @@
+.recipient-form {
+	width: 300px;
+}
+
+.order-preview {
+	width: 400px;
+}
+
+.checkout-hidden{
+	display:none;
+}
+
+.complete-checkout-btn{
+	margin-top: 10px;
+	margin-bottom: 50px;
+}

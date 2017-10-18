@@ -1,0 +1,52 @@
+<template name="shoppingcart">
+	<div class="shoppingcart">
+		<div class="cart-close-button">
+			<a href="#" class="h4 js-close-cart"><span class="glyphicon glyphicon-remove" arial-hidden="true"></span></a>
+		</div>
+		<div class="product-table">
+			<table class="table table-stripped">
+				<thead>
+					<tr>
+						<th></th>
+				        <th>{{#if eng}}Product{{else}}Προϊόν{{/if}}</th>
+				        <th>{{#if eng}}Price{{else}}Τιμή{{/if}}</th>
+				        <th>{{#if eng}}Quantity{{else}}Ποσότητα{{/if}}</th>
+			      	</tr>
+				</thead>
+				<tbody>
+				{{#each meliaproduct}}
+				<tr>
+				{{#with meliaproduct_details _id}}
+					<td><img style="max-width: 75px; max-height: 75px;" src="{{img_src}}" alt="{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}" /></td>
+					<td>{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}</td>
+					<td>{{price}} <span class="glyphicon glyphicon-euro" aria-hidden="true"></span></td>
+				{{/with}}
+					<td>{{quantity}} <a href="#" class="js-remove-item-from-cart1 not-a-link"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> </td>
+				</tr>
+				{{/each}}
+				{{#each kallintikaproduct}}
+				<tr>
+				{{#with kallintikaproduct_details _id}}
+					<td><img style="max-width: 75px; max-height: 75px;" src="{{img_src}}" alt="{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}" /></td>
+					<td>{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}</td>
+					<td>{{price}} <span class="glyphicon glyphicon-euro" aria-hidden="true"></span></td>
+					{{/with}}
+					<td>{{quantity}} <a href="#" class="js-remove-item-from-cart2 not-a-link"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+				</tr>
+				{{/each}}
+				</tbody>
+			</table>
+		</div>
+		<div class="checkoutbox">
+			<table class="table checkout-table">
+				<tbody>
+					<tr>
+						<td>{{#if eng}}TOTAL (ITEMS {{NUM_OF_ITEMS}}){{else}}Σύνολο (Τεμάχια {{NUM_OF_ITEMS}}){{/if}}</td>
+						<td style="text-align: right;"> {{#if eng}}PRICE: {{TOTAL_PRICE}}{{else}}Τιμή: {{TOTAL_PRICE}}{{/if}}<span class="glyphicon glyphicon-euro" aria-hidden="true"></span></td>
+					</tr>
+				</tbody>
+			</table>
+			<a class="btn btn-primary js-shoppingcart-view-cart" href="#">{{#if eng}} VIEW CART {{else}}ΠΡΟΒΟΛΗ ΚΑΛΑΘΙΟΥ{{/if}}</a>
+		</div>
+	</div>
+</template>

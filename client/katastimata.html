@@ -1,0 +1,56 @@
+<template name="katastimata">
+	<article id="shop">
+		<div class="container">
+			<div clsas="row">
+				<h2>{{#if eng}}Stores{{else}}Σημεία Πώλησης{{/if}}</h2>
+			</div>
+			<div class="col-sm-5">
+				<div class="container">
+					<div class="row">
+						{{#each salespoints}}
+						<h3>{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}</h3>
+						<p>{{#if eng}}{{extra_eng}}{{else}}{{extra_gr}}{{/if}}</p>
+						<p>{{#if eng}}Address: {{address_eng}}{{else}}Διεύθυνση: {{address_gr}}{{/if}}</p>
+						<p>{{#if eng}}Phone: {{else}}Τηλέφωνο: {{/if}}{{phone}}</p>
+						<form class="coordinates" style="visibility:hidden; display: none;">
+							<input type="text" name="latitude" value = "{{latitude}}" >
+							<input type= "text" name = "longtitude" value = "{{longtitude}}">
+						</form>
+						{{/each}}
+					</div>
+				</div>
+			</div>
+			<div class="col-md-7">
+				<div id="map" style="height:400px; width:100%;"></div>
+			</div>
+		    <script>
+		      function initMap() {
+		        var myLatLng = {lat: 38.700451, lng:22.954568};
+		        var map = new google.maps.Map(document.getElementById('map'), {
+		          zoom: 5,
+		          center: myLatLng
+		        });
+		        var stores = $(".coordinates");
+		        for (var i = 0; i<stores.length; i++) {
+		        	var marker = new google.maps.Marker({
+			          position: {lat: parseFloat(stores[i].latitude.value),lng: parseFloat(stores[i].longtitude.value)},
+			          map: map,
+			          title: 'Hello World!'
+			        });
+		        }
+		        
+		      }
+		    </script>
+		    <script async defer
+		   		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx_f6BjSnL4wQQoUfjZI_D_N5YkDLOomE&callback=initMap">
+		    </script>
+		</div>
+	</article>
+	<script type="text/javascript">
+		scrollDown("#shop");
+		var intervalId = setInterval(function () {
+			clearInterval(intervalId);
+			initMap();
+		}, 500);
+	</script>
+</template>

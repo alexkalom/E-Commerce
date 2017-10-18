@@ -1,0 +1,52 @@
+<template name="admin_manage_salespoints">
+	<section id="shop">
+		<div class="container">
+			{{#if admin}}
+			<div class="row">
+				<h2>Σημεία Πώλησης</h2>
+			</div>
+			<div class="row">
+				<a class="btn btn-success js-add-new-salepoint" href="#">Νέο Σημείο Πώλησης</a>
+			</div>
+			
+			<div class="row">
+				{{#each salespoints}}
+				<a href="/admin/update_sales_point/{{_id}}">
+				<h3>{{#if eng}}{{name_eng}}{{else}}{{name_gr}}{{/if}}</h3>
+				<p>{{#if eng}}{{extr_eng}}{{else}}{{extra_gr}}{{/if}}</p>
+				<p>{{#if eng}}Address: {{address_eng}}{{else}}Διεύθυνση: {{address_gr}}{{/if}}</p>
+				<p>{{#if eng}}Phone: {{else}}Τηλέφωνο: {{/if}}{{phone}}</p>
+				<form class="coordinates" style="visibility:hidden; display: none;">
+					<input type="text" name="latitude" value = "{{latitude}}" >
+					<input type= "text" name = "longtitude" value = "{{longtitude}}">
+				</form>
+			</a>
+				{{/each}}
+			</div>
+				
+			<script type="text/javascript">
+				window.clearInterval(intervalId);
+			</script>
+			{{else}}
+			<div class="container">
+				<h2>This page does not exist HTTP Error 404</h2>
+				<p>You will be redirected automatically to the home page in <span style="color:blue;" id="time">5</span> seconds</p>
+				<script type="text/javascript">
+					var count = 5;
+					var intervalId = setInterval(function () {
+						if (count == 0) {
+							clearInterval(intervalId);
+							Router.go('/');
+						}
+						else {
+							count--;
+							$("#time").html(count);
+						}
+					},1000);
+				</script>
+			</div>		
+			{{/if}}
+		</div>
+	</section>
+
+</template>
